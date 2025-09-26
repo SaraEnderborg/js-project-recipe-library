@@ -1,71 +1,192 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f9f9ff;
-  color: #333;
+
+* { /* stjärnan=alla element-allt som har en </> */
+  box-sizing: border-box;
   margin: 0;
-  padding: 20px;
+  padding: 0;
+}
+
+body {
+  background: #fafafa;
+  color: #222;
+  padding: 1rem;
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: auto;
 }
 
 h1 {
-  font-size: 2.5rem;
-  color: #0018A8;
-  margin-bottom: 20px;
+  font-family: "Futura", "Trebuchet MS", Arial, sans-serif;
+  font-size: 2rem;                 
+  font-weight: bold;
+  color: #0033cc;                  
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-h2 {
-  font-size: 1.5rem;
-  margin: 15px 0;
-  color: #444;
+.filters,
+.sort {
+  display: flex;
+  flex-wrap: wrap;/* radbrytning på små skärmar */               
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
-.filters {
-  margin: 20px 0;
-  padding: 15px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-}
-
-.filter-group {
-  margin-bottom: 20px;
-}
-
-.filter-group strong {
-  display: block;
-  margin-bottom: 8px;
-  color: #0018A8;
-  font-size: 1.1rem;
-}
-
-.filter-group label {
-  display: block;
-  margin: 6px 0;
+.filter-option {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 2px solid #40E0D0;         
+  border-radius: 999px;
+  background-color: #40E0D0;         
+  color: white;                      
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
 }
 
-.filter-group input {
-  margin-right: 8px;
+
+.filter-option:hover {
+  background-color: #20B2AA;        
+  border-color: #20B2AA;
 }
 
-.sorting {
-  margin: 20px;
-  padding: 15px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+.filter-option:has(input[type="radio"]:checked) {
+  background-color: #0033CC;         
+  border-color: #0033CC;             
+  color: white;                      
 }
 
-.sorting strong {
-  display: block;
-  margin-bottom: 8px;
-  color: #0018A8;
-  font-size: 1.1rem;
-}
-
-.sorting label {
-  display: block;
-  margin: 6px 0;
+.sort-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 2px solid #ff5fa2;         
+  border-radius: 999px;
+  background: white;                 
+  color: #ff5fa2;                     
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.sort-button:hover {
+  background-color: #ff5fa2;         
+  color: white;
+  border-color: #ff5fa2;
+}
+
+.sort-button:has(input[type="radio"]:checked) {
+  background-color: #ff5fa2;         
+  border-color: #ff5fa2;
+  color: white;
+}
+
+
+.filters input[type="radio"],
+.sort input[type="radio"] {
+  display: none;
+}
+
+.filter-option,
+.sort-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 2px solid #ccc;
+  border-radius: 999px;
+  background: white ;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.filter-option:hover,
+.sort-button:hover {
+  border-color: #ff5fa2;
+  background-color: #ff5fa2; 
+  }          
+/* Selected-state för filter button (via :has) */
+.filter-option:has(input[type="radio"]:checked) {
+  background: #0033cc;              
+  color: white;
+  border-color: #0033cc;
+} 
+
+/* Selected-state för sortbutton(rosa) */
+.sort-button:has(input[type="radio"]:checked) {
+  background: #ff5fa2;
+  color: white;
+  border-color: #ff5fa2;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.card.selected {
+  border: 2px solid #0033cc;
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.card-content h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.card-content ul {
+  padding-left: 1.2rem;
+  font-size: 0.85rem;
+}
+
+@media (min-width: 600px) {
+  .h1 {
+    font-size: 2.5rem;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

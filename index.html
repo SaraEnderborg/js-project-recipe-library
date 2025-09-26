@@ -1,119 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  
-  <title>Recipe library</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipe Library</title>
+  <link rel="stylesheet" href="style.css" />
+
 </head>
 <body>
-  <h1>Recipe Library</h1>
+  <main class="main-content">
+    <h1> Recipe Library</h1>
 
-<section class="filters">
-    <h2>Filters</h2>
+    <section class="filters" aria-label="Cuisine filter">
+      <h2 class="section-title">Filter on kitchen</h2>
+      <!--radio ligger inuti ett label så man kan klicka på hela knappen -->
+      <label class="filter-option">
+        <input type="radio" name="cuisine" value="All" checked>
+        All
+      </label>
 
-<div class="filter-group">
-  <strong>Diet:</strong>
-  <label>
-    <input 
-     type="checkbox"
-     value="Vegetarian"> Vegetarian
-  </label>
-  <label>
-    <input 
-     type="checkbox"
-     value="Gluten-free"> Gluten-free
-  </label>
-  <label>
-    <input 
-      type="checkbox"
-      value="Dairy-free"> Vegan
-  </label>
-</div>
+      <label class="filter-option">
+        <input type="radio" name="cuisine" value="italian">
+        Italian
+      </label>
 
-<div class="filter-group">
-  <strong>Cousine:</strong>
-  <label>
-    <input 
-     type="checkbox"
-     value="Mediterranean"> Mediterranean
-  </label>
-  <label>
-    <input 
-     type="checkbox"
-     value="Middle Eastern"> Middle Eastern
-  </label>
-  <label>
-    <input 
-      type="checkbox"
-      value="Asian"> Asian
-  </label>
-  <label>
-    <input 
-     type="checkbox"
-     value="Italian"> Italian
-  </label>
-  <label>
-    <input 
-      type="checkbox"
-      value="Mexican"> Mexican
-  </label>
-</div>
-<div class="filter-group">
-  <strong>Cooking-Time:</strong>
-  <label>
-    <input 
-     type="radio"
-     value="Under15"> Under 15 min 
-  </label>
-  <label>
-    <input 
-     type="radio"
-     value="15to30"> 15-30 min
-  </label>
-  <label>
-    <input 
-      type="radio"
-      value="30to60"> 30-60 min
-  </label>
-  <label>
-    <input 
-     type="radio"
-     value="over60"> Over 60 min
-  </label>
-  </div>
+      <label class="filter-option">
+        <input type="radio" name="cuisine" value="middle eastern">
+        Middle Eastern
+      </label>
 
- </div>
-</section>
+      <label class="filter-option">
+        <input type="radio" name="cuisine" value="asian">
+        Asian
+      </label>
+    </section>
 
-<section class="sorting">
-  <h2>Sorting</h2>
-  <select id="sort">
-    <option 
-      value="time">By Cooking Time</option>
-    <option
-      value="popularity">By popularity</option>
-    <option
-      value="price">Price</option>
-  </select>
-</section>
+    <section class="sort" aria-label="Sort by cooking time">
+      <h2 class="section-title">Sort on time</h2>
+      <label class="sort-button">
+        <input type="radio" name="order" value="desc" checked>
+        Descending
+      </label>
 
-<section class="recipes">
-  <div class="card" id="recipe-card">
-    <img 
-      src="https://via.placeholder.com/250x150" alt="Placeholder">
-    <h3>Placeholder Recipe</h3>
-    <p><strong>Diet</strong> Example</p>
-    <p><strong>Cuisine</strong> Example</p>
-    <p><strong>Time</strong> Example</p>  
-  </div>
-</section>
+      <label class="sort-button">
+        <input type="radio" name="order" value="asc">
+        Ascending
+      </label>
+    </section>
 
+    <section class="cards" id="cardsContainer" aria-label="Recipe cards grid">
+      <!-- Korten genereras med js -->
+    </section>
+  </main>
 
-
-
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
