@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  
+  <title>Recipe library</title>
+</head>
+<body>
+  <h1>Recipe Library</h1>
+
+<section class="filters">
+    <h2>Filters</h2>
+
+<div class="filter-group">
+  <strong>Diet:</strong>
+  <label>
+    <input 
+     type="checkbox"
+     value="Vegetarian"> Vegetarian
+  </label>
+  <label>
+    <input 
+     type="checkbox"
+     value="Gluten-free"> Gluten-free
+  </label>
+  <label>
+    <input 
+      type="checkbox"
+      value="Dairy-free"> Vegan
+  </label>
+</div>
+
+<div class="filter-group">
+  <strong>Cousine:</strong>
+  <label>
+    <input 
+     type="checkbox"
+     value="Mediterranean"> Mediterranean
+  </label>
+  <label>
+    <input 
+     type="checkbox"
+     value="Middle Eastern"> Middle Eastern
+  </label>
+  <label>
+    <input 
+      type="checkbox"
+      value="Asian"> Asian
+  </label>
+  <label>
+    <input 
+     type="checkbox"
+     value="Italian"> Italian
+  </label>
+  <label>
+    <input 
+      type="checkbox"
+      value="Mexican"> Mexican
+  </label>
+</div>
+<div class="filter-group">
+  <strong>Cooking-Time:</strong>
+  <label>
+    <input 
+     type="radio"
+     value="Under15"> Under 15 min 
+  </label>
+  <label>
+    <input 
+     type="radio"
+     value="15to30"> 15-30 min
+  </label>
+  <label>
+    <input 
+      type="radio"
+      value="30to60"> 30-60 min
+  </label>
+  <label>
+    <input 
+     type="radio"
+     value="over60"> Over 60 min
+  </label>
+  </div>
+
+ </div>
+</section>
+
+<section class="sorting">
+  <h2>Sorting</h2>
+  <select id="sort">
+    <option 
+      value="time">By Cooking Time</option>
+    <option
+      value="popularity">By popularity</option>
+    <option
+      value="price">Price</option>
+  </select>
+</section>
+
+<section class="recipes">
+  <div class="card" id="recipe-card">
+    <img 
+      src="https://via.placeholder.com/250x150" alt="Placeholder">
+    <h3>Placeholder Recipe</h3>
+    <p><strong>Diet</strong> Example</p>
+    <p><strong>Cuisine</strong> Example</p>
+    <p><strong>Time</strong> Example</p>  
+  </div>
+</section>
+
+
+
+
+
+<script src="script.js"></script>
+</body>
+</html>
