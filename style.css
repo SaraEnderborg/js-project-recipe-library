@@ -5,8 +5,18 @@
   padding: 0;
 }
 
+:root {
+  --page-bg: #fafafa;
+  --blue-main:#0033cc;
+  --blue-outline: #0044cc;
+  --mint-green: #C0F8D1;
+  --pink-bg: #FDDDDD;
+  --text-blue: #0033AA; 
+}
+
+
 body {
-  background: #fafafa;
+  background: var(--page-bg);
   color: #222;
   padding: 1rem;
 }
@@ -20,7 +30,7 @@ h1 {
   font-family: "Futura", "Trebuchet MS", Arial, sans-serif;
   font-size: 2rem;                 
   font-weight: bold;
-  color: #0033cc;                  
+  color: var(--blue-main);                  
   text-align: center;
   margin-bottom: 1rem;
 }
@@ -37,86 +47,50 @@ h1 {
 .filter-option {
   display: inline-block;
   padding: 0.5rem 1rem;
-  border: 2px solid #40E0D0;         
+  border: 2px solid transparent;         
   border-radius: 999px;
-  background-color: #40E0D0;         
-  color: white;                      
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.2s ease-in-out;
-}
-
-
-.filter-option:hover {
-  background-color: #20B2AA;        
-  border-color: #20B2AA;
-}
-
-.filter-option:has(input[type="radio"]:checked) {
-  background-color: #0033CC;         
-  border-color: #0033CC;             
-  color: white;                      
-}
-
-.sort-button {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border: 2px solid #ff5fa2;         
-  border-radius: 999px;
-  background: white;                 
-  color: #ff5fa2;                     
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.2s ease-in-out;
-}
-
-.sort-button:hover {
-  background-color: #ff5fa2;         
-  color: white;
-  border-color: #ff5fa2;
-}
-
-.sort-button:has(input[type="radio"]:checked) {
-  background-color: #ff5fa2;         
-  border-color: #ff5fa2;
-  color: white;
-}
-
-
-.filters input[type="radio"],
-.sort input[type="radio"] {
-  display: none;
-}
-
-.filter-option,
-.sort-button {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border: 2px solid #ccc;
-  border-radius: 999px;
-  background: white ;
+  background-color: var(--mint-green);         
+  color: var(--text-blue);                      
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.2s ease-in-out;
 }
 
 .filter-option:hover,
-.sort-button:hover {
-  border-color: #ff5fa2;
-  background-color: #ff5fa2; 
-  }          
-/* Selected-state för filter button (via :has) */
 .filter-option:has(input[type="radio"]:checked) {
-  background: #0033cc;              
-  color: white;
-  border-color: #0033cc;
-} 
+  border-color: var(--blue-outline);
+}
 
-/* Selected-state för sortbutton(rosa) */
+.filter-option:has(input[type="radio"]:checked) {
+  background-color: var(--mint-green);
+  color: var(--text-blue);
+}
+
+.sort-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 2px solid transparent;          
+  border-radius: 999px;
+  background-color: var(--pink-bg);
+  color: var(--text-blue);                  
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.sort-button:hover,
 .sort-button:has(input[type="radio"]:checked) {
-  background: #ff5fa2;
-  color: white;
-  border-color: #ff5fa2;
+  border-color: var(--blue-outline);
+}
+
+.sort-button:has(input[type="radio"]:checked) {
+  background-color: var(--pink-bg);
+  color: var(--text-blue);
+}
+
+.filters input[type="radio"],
+.sort input[type="radio"] {
+  display: none;
 }
 
 .cards {

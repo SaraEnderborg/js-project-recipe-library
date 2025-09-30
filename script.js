@@ -5,24 +5,24 @@ const recipes = [
     title: "Cheat’s cheesy Focaccia",
     cuisine: "Italy",
     time: 40,
-    image: "https://via.placeholder.com/300x180?text=Focaccia",
+    image: "focaccia.jpg" ,
     ingredients: [
-      "500 g bread mix",
+      "breadmix",
       "Olive oil",
-      "2 tbsp dried oregano",
-      "75 g grated cheese"
+      "oregano",
+      "cheese"
     ]
   },
   {
     id: 2,
     title: "Burnt-Scallion Fish",
-    cuisine: "China",
+    cuisine: "Asian",
     time: 25,
-    image: "https://via.placeholder.com/300x180?text=Fish",
+    image:"focaccia.jpg",
     ingredients: [
-      "8 scallions",
-      "2 tbsp oil",
-      "2 fish fillets"
+      "scallions",
+      "oil",
+      "fish"
     ]
   },
   {
@@ -30,17 +30,68 @@ const recipes = [
     title: "Falafel Wrap",
     cuisine: "Middle Eastern",
     time: 35,
-    image: "https://via.placeholder.com/300x180?text=Falafel+Wrap",
-    ingredients: [
-      "200 g dried chickpeas, soaked overnight",
-      "1 small onion, chopped",
-      "2 cloves garlic, minced",
-      "1 tsp ground cumin",
-      "1 tsp ground coriander",
-      "Fresh parsley, chopped",
+    image: "focaccia.jpg",
+    ingredients: [ 
+      "chickpeas",
+      "onion",
+      "garlic",
+      "cumin",
+      "coriander",
+      "Fresh parsley",
       "Salt and pepper to taste"
     ]
-  }
+  },
+  {
+   id: 4,
+    title: "Vegan Lentil Soup",
+    cuisine: "Mediterranean",
+    time: 30,
+    image: "focaccia.jpg",
+    ingredients: [  
+      "red lentils",
+      "carrots",
+      "onion",
+      "garlic",
+      "tomato paste",
+      "cumin",
+      "paprika",
+      "vegetable broth",
+      "olive oil",
+      "salt"
+    ]
+  },
+  {
+    id: 5,
+    title: "Vegetarian Pesto Pasta",
+    cuisine: "Italian",
+    time: 25,
+    image: "focaccia.jpg",
+    ingredients: [
+      "pasta",
+      "basil",
+      "parmesan cheese",
+      "garlic",
+      "pine nuts",
+      "olive oil",
+      "salt",
+      "black pepper"
+    ],
+  },
+   {
+    id: 6,
+    title: "Dairy-Free Tacos",
+    cuisine: "Mexican",
+    time: 15,
+    image: "focaccia.jpg",
+    ingredients: [
+      "corn tortillas",
+      "ground beef",
+      "taco seasoning",
+      "lettuce",
+      "tomato",
+      "avocado"
+    ],
+  },
 ];
 
 // === Variabler och DOM-element ===
