@@ -1,20 +1,18 @@
 // === Recept ===
 const recipes = [
   {
-    id: 1,
-    title: "Cheat’s cheesy Focaccia",
-    cuisine: "Italy",
+    title: "Cheat's cheesy Focaccia",
+    cuisine: "Italian",
     time: 40,
-    image: "focaccia.jpg" ,
+    image: "focaccia.jpg", 
     ingredients: [
       "breadmix",
       "Olive oil",
-      "oregano",
-      "cheese"
+       "oregano", 
+       "cheese",
     ]
   },
   {
-    id: 2,
     title: "Burnt-Scallion Fish",
     cuisine: "Asian",
     time: 25,
@@ -22,32 +20,30 @@ const recipes = [
     ingredients: [
       "scallions",
       "oil",
-      "fish"
+      "fish",
     ]
   },
   {
-    id: 3,
     title: "Falafel Wrap",
     cuisine: "Middle Eastern",
     time: 35,
     image: "focaccia.jpg",
-    ingredients: [ 
+    ingredients:[
       "chickpeas",
       "onion",
       "garlic",
       "cumin",
       "coriander",
       "Fresh parsley",
-      "Salt and pepper to taste"
+      "Salt and pepper to taste",
     ]
   },
   {
-   id: 4,
     title: "Vegan Lentil Soup",
     cuisine: "Mediterranean",
     time: 30,
     image: "focaccia.jpg",
-    ingredients: [  
+    ingredients: [
       "red lentils",
       "carrots",
       "onion",
@@ -57,11 +53,10 @@ const recipes = [
       "paprika",
       "vegetable broth",
       "olive oil",
-      "salt"
+      "salt",
     ]
   },
   {
-    id: 5,
     title: "Vegetarian Pesto Pasta",
     cuisine: "Italian",
     time: 25,
@@ -74,11 +69,10 @@ const recipes = [
       "pine nuts",
       "olive oil",
       "salt",
-      "black pepper"
-    ],
+      "black pepper",
+    ]
   },
    {
-    id: 6,
     title: "Dairy-Free Tacos",
     cuisine: "Mexican",
     time: 15,
@@ -89,60 +83,51 @@ const recipes = [
       "taco seasoning",
       "lettuce",
       "tomato",
-      "avocado"
-    ],
+      "avocado",
+    ]
   },
-];
+]
 
-// === Variabler och DOM-element ===
-let selectedCuisine = "All";
-let sortOrder = "desc";
-let selectedCardId = null;
+console.log(recipes)
 
-const cardsContainer = document.getElementById("cardsContainer");
 
-// === Funktion för att skapa ett receptkort ===
-const createCardHTML = r => `
-  <div class="card ${selectedCardId === r.id ? "selected" : ""}" data-id="${r.id}">
-    <img src="${r.image}" alt="${r.title}">
-    <div class="card-content">
-      <h3>${r.title}</h3>
-      <p><strong>Cuisine:</strong> ${r.cuisine}</p>
-      <p><strong>Time:</strong> ${r.time} minutes</p>
-      <h4>Ingredients:</h4>
-      <ul>${r.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-    </div>
-  </div>
-`;
+//DOM selectors
+const cardsContainer = document.getElementById("cardsContainer")
+const cuisineFilter = document.getElementById("cuisineFilter")
 
-// === Funktion för att visa korten ===
-function renderCards() {
-  const filtered = recipes
-    .filter(r => selectedCuisine === "All" || r.cuisine === selectedCuisine)
-    .sort((a, b) => sortOrder === "asc" ? a.time - b.time : b.time - a.time);
+const showCardsContainer = recipesArray => {
+  cardsContainer.innerHTML = ""
+ 
 
-  cardsContainer.innerHTML = filtered.map(createCardHTML).join("");
+  recipesArray.forEach(recipe => {
+     cardsContainer.innerHTML += `
+     <div class="card">
+      <h3>${recipe.title}</h3>
+        <img src=${recipe.image} alt=${recipe.image} />
+        <p><strong>Cuisine:</strong> ${recipe.cuisine}</p>
+        <p><strong>Time:</strong> ${recipe.time}</p>
+        <p><strong>Ingredients:</strong> ${recipe.ingredients}</p>
+      </div>
+    `
+ })
 }
 
-// === Event-lyssnare ===
+showCardsContainer(recipes)
 
-// För både filter och sorteringsknappar
-document.querySelectorAll('input[name="cuisine"], input[name="order"]')
-  .forEach(input => input.addEventListener("change", () => {
-    if (input.name === "cuisine") selectedCuisine = input.value;
-    if (input.name === "order") sortOrder = input.value;
-    renderCards();
-  }));
+const filterOnCuisine = () => {
+  const selected = cuisineFilter.querySelector('input[name="cuisine"]:checked')
+  const selectedCuisine =selected ? selected.value : "all"            
+  console.log(selectedCuisine)
 
-// För att markera kort
-cardsContainer.addEventListener("click", e => {
-  const card = e.target.closest(".card");
-  if (card) {
-    selectedCardId = Number(card.dataset.id);
-    renderCards();
-  }
-});
+  const filtered = selectedCuisine === "all"
+   ? recipes
+   : recipes.filter(recipe => recipe.cuisine.toLowerCase() === selectedCuisine.toLowerCase())
 
-// === Starta ===
-renderCards();
+showCardsContainer(filtered)
+}
+
+
+
+
+cuisineFilter.addEventListener("change", filterOnCuisine)
 

@@ -11,27 +11,32 @@
   <main class="main-content">
     <h1> Recipe Library</h1>
 
-    <section class="filters" aria-label="Cuisine filter">
+    <section class="filters" id="cuisineFilter">
       <h2 class="section-title">Filter on kitchen</h2>
       <!--radio ligger inuti ett label så man kan klicka på hela knappen -->
       <label class="filter-option">
-        <input type="radio" name="cuisine" value="All" checked>
+        <input type="radio" name="cuisine" value="all" checked>
         All
       </label>
 
+       <label class="filter-option">
+        <input type="radio" name="cuisine" value="asian">
+        Asian
+      </label>
+      
       <label class="filter-option">
-        <input type="radio" name="cuisine" value="italian">
+        <input type="radio" name="cuisine" value="Italian">
         Italian
+      </label>
+
+      <label class="filter-option">
+        <input type="radio" name="cuisine" value="Mexican">
+        Mexican
       </label>
 
       <label class="filter-option">
         <input type="radio" name="cuisine" value="middle eastern">
         Middle Eastern
-      </label>
-
-      <label class="filter-option">
-        <input type="radio" name="cuisine" value="asian">
-        Asian
       </label>
     </section>
 
