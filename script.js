@@ -94,6 +94,7 @@ console.log(recipes)
 //DOM selectors
 const cardsContainer = document.getElementById("cardsContainer")
 const cuisineFilter = document.getElementById("cuisineFilter")
+const sortSection = document.querySelector(".sort")
 
 const showCardsContainer = recipesArray => {
   cardsContainer.innerHTML = ""
@@ -127,7 +128,30 @@ showCardsContainer(filtered)
 }
 
 
+const sortOnTime = () => {
+  const selected = sortSection.querySelector('input[name="order"]:checked')
+  const order =selected ? selected.value : "desc"            
+  console.log(order)
+
+  const sorted = [...recipes].sort((a, b) => {
+    return order === "asc"
+    ? a.time - b.time
+    :b.time - a.time
+
+  })
+  
+showCardsContainer(sorted)
+}
+
+
+
+
+
+
+
+
 
 
 cuisineFilter.addEventListener("change", filterOnCuisine)
+sortSection.addEventListener("change", sortOnTime)
 
