@@ -36,7 +36,7 @@ h1 {
 }
 
 .filters,
-.sort {
+.sort,.random-button {
   display: flex;
   flex-wrap: wrap;/* radbrytning på små skärmar */               
   gap: 0.5rem;
@@ -91,6 +91,22 @@ h1 {
 .filters input[type="radio"],
 .sort input[type="radio"] {
   display: none;
+}
+
+.random-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-color: var(--pink-bg);
+  color: var(--text-blue);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.random-button:hover {
+  border-color: var(--blue-outline);
 }
 
 .cards {

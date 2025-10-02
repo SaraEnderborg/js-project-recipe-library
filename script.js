@@ -94,7 +94,8 @@ console.log(recipes)
 //DOM selectors
 const cardsContainer = document.getElementById("cardsContainer")
 const cuisineFilter = document.getElementById("cuisineFilter")
-const sortSection = document.querySelector(".sort")
+const sortSection = document.getElementById("sortOnTime")
+const randomButton = document.getElementById("random-button")
 
 const showCardsContainer = recipesArray => {
   cardsContainer.innerHTML = ""
@@ -143,15 +144,14 @@ const sortOnTime = () => {
 showCardsContainer(sorted)
 }
 
+const getRandomRecipe = () => {
+  const randomIndex = Math.floor(Math.random() * recipes.length)
+  const randomRecipe = [recipes[randomIndex]]
 
-
-
-
-
-
-
-
+  showCardsContainer(randomRecipe)
+}
 
 cuisineFilter.addEventListener("change", filterOnCuisine)
 sortSection.addEventListener("change", sortOnTime)
+randomButton.addEventListener("click", getRandomRecipe)
 
