@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Recipe Library</title>
   <link rel="stylesheet" href="style.css" />
-
 </head>
 <body>
   <main class="main-content">
+
     <h1> Recipe Library</h1>
 
     <section class="filters" id="cuisineFilter">
       <h2 class="section-title">Filter on kitchen</h2>
-      <!--radio ligger inuti ett label så man kan klicka på hela knappen -->
+      
       <label class="filter-option">
         <input type="radio" name="cuisine" value="all" checked>
         All
@@ -38,6 +38,11 @@
         <input type="radio" name="cuisine" value="middle eastern">
         Middle Eastern
       </label>
+
+      <label class="filter-option">
+        <input type="radio" name="cuisine" value="nordic">
+        Nordic
+      </label>
     </section>
 
     <section class="sort" id="sortOnTime">
@@ -57,7 +62,6 @@
     </section>
 
     <section class="cards" id="cardsContainer" aria-label="Recipe cards grid">
-      <!-- Korten genereras med js -->
     </section>
   </main>
 

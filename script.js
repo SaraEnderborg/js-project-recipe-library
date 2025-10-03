@@ -99,17 +99,32 @@ const randomButton = document.getElementById("random-button")
 
 const showCardsContainer = recipesArray => {
   cardsContainer.innerHTML = ""
- 
 
+  if (!recipesArray || recipesArray.length === 0) {
+    cardsContainer.innerHTML = `
+  <div class="empty-message">
+    <h2> Oops 😅</h2>
+    <p> We couldn't find any recipes for your filter...<br>
+    Try changing it or click <strong>Surprise me!</strong> 🎉
+    </p>
+  </div>  
+ `
+    return
+  }
+ 
   recipesArray.forEach(recipe => {
      cardsContainer.innerHTML += `
      <div class="card">
+        <img src="${recipe.image}" alt="${recipe.title}" />
+     <div class="card-content">
       <h3>${recipe.title}</h3>
-        <img src=${recipe.image} alt=${recipe.image} />
-        <p><strong>Cuisine:</strong> ${recipe.cuisine}</p>
-        <p><strong>Time:</strong> ${recipe.time}</p>
-        <p><strong>Ingredients:</strong> ${recipe.ingredients}</p>
-      </div>
+      <p><strong>Cuisine:</strong> ${recipe.cuisine}</p>
+     <p><strong>Time:</strong> ${recipe.time} min</p>   
+      <p class="ingredients-header">Ingredients:</p>
+      <ul>
+        ${recipe.ingredients.map(ing => `<li>${ing}</li>`).join("")}
+      </ul>
+    </div>
     `
  })
 }
