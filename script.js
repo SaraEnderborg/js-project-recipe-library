@@ -98,6 +98,7 @@ const sortSection = document.getElementById("sortOnTime")
 const randomButton = document.getElementById("random-button")
 
 const showCardsContainer = recipesArray => {
+   console.log("Rendering recipes:", recipesArray.length)
   cardsContainer.innerHTML = ""
 
   if (!recipesArray || recipesArray.length === 0) {
@@ -113,13 +114,15 @@ const showCardsContainer = recipesArray => {
   }
  
   recipesArray.forEach(recipe => {
-     cardsContainer.innerHTML += `
-     <div class="card">
+   cardsContainer.innerHTML += `
+    <div class="card">
         <img src="${recipe.image}" alt="${recipe.title}" />
-     <div class="card-content">
+    <div class="card-content">
       <h3>${recipe.title}</h3>
-      <p><strong>Cuisine:</strong> ${recipe.cuisine}</p>
-     <p><strong>Time:</strong> ${recipe.time} min</p>   
+    <div class="divider"></div> 
+      <p><strong>Cuisine:</strong> <span class="cuisine-value"> ${recipe.cuisine}</p>
+     <p><strong>Time:</strong> <span class="time-value"> ${recipe.time} min</p>
+    <div class="divider"></div>   
       <p class="ingredients-header">Ingredients:</p>
       <ul>
         ${recipe.ingredients.map(ing => `<li>${ing}</li>`).join("")}
@@ -134,20 +137,22 @@ showCardsContainer(recipes)
 const filterOnCuisine = () => {
   const selected = cuisineFilter.querySelector('input[name="cuisine"]:checked')
   const selectedCuisine =selected ? selected.value : "all"            
-  console.log(selectedCuisine)
+  console.log("Selected cuisine:", selectedCuisine)
 
   const filtered = selectedCuisine === "all"
    ? recipes
    : recipes.filter(recipe => recipe.cuisine.toLowerCase() === selectedCuisine.toLowerCase())
 
+   console.log("Filtered recipes:", filtered)
 showCardsContainer(filtered)
+
 }
 
 
 const sortOnTime = () => {
   const selected = sortSection.querySelector('input[name="order"]:checked')
   const order =selected ? selected.value : "desc"            
-  console.log(order)
+  console.log("Selected order:", order)
 
   const sorted = [...recipes].sort((a, b) => {
     return order === "asc"
@@ -155,13 +160,18 @@ const sortOnTime = () => {
     :b.time - a.time
 
   })
-  
+
+  console.log("sorted recipes:", sorted) 
 showCardsContainer(sorted)
+
 }
 
 const getRandomRecipe = () => {
   const randomIndex = Math.floor(Math.random() * recipes.length)
+  console.log("Random index:", randomIndex)
+
   const randomRecipe = [recipes[randomIndex]]
+   console.log("Random recipe:", randomRecipe)
 
   showCardsContainer(randomRecipe)
 }
