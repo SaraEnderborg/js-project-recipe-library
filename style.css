@@ -78,11 +78,12 @@ h2 {
 }
 
 .filter-option:has(input[type="radio"]:checked) {
-  background-color: var(--mint-green);
-  color: var(--text-blue);
+  background-color:var(--blue-main);
+  border-color: var(--blue-outline);
+  color:#FFFFFF;
 }
 
-.filters input[type="radio"] {
+input[type="radio"] {
   display: none;
 }
 
@@ -98,10 +99,14 @@ h2 {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
-
-.sort-button:hover,
 .sort-button:has(input[type="radio"]:checked) {
+  background-color: #FF6589;
+  color:#FFFFFF;
+}
+.sort-button:hover {
+  background-color: #FF6589;
   border-color: var(--blue-outline);
+  color:#FFFFFF;
 }
 
 .random-button {
@@ -118,7 +123,9 @@ h2 {
 }
 
 .random-button:hover {
+  background-color: rebeccapurple;
   border-color: var(--blue-outline);
+  color:#FFFFFF;
 }
 
 .cards {
