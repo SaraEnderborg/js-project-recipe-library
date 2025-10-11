@@ -1,5 +1,5 @@
-
-* { /* stjärnan=alla element-allt som har en </> */
+/* ========== GLOBAL STYLES ========== */
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -7,13 +7,12 @@
 
 :root {
   --page-bg: #fafafa;
-  --blue-main:#0018A4;
+  --blue-main: #0018a4;
   --blue-outline: #0044cc;
-  --mint-green: #C0F8D1;
-  --pink-bg: #FDDDDD;
-  --text-blue: #0033AA; 
+  --mint-green: #c0f8d1;
+  --pink-bg: #fddddf;
+  --text-blue: #0033aa;
 }
-
 
 body {
   background: var(--page-bg);
@@ -27,14 +26,16 @@ body {
   padding: 0 16px;
 }
 
+/* ========== HEADINGS ========== */
 h1 {
   font-family: "Futura", "Trebuchet MS", Arial, sans-serif;
-  font-size: 64px;             
+  font-size: 64px;
   font-weight: 700;
   color: var(--blue-main);
-  line-height: 1;
-  text-align: center;
+  line-height: 100%;
+  text-align: left;
   margin-top: 64px;
+  margin-left: 64px;
   margin-bottom: 32px;
 }
 
@@ -42,34 +43,71 @@ h2 {
   font-family: "Futura", sans-serif;
   font-size: 22px;
   font-weight: 700;
-  font-style: bold;
   line-height: 100%;
-  letter-spacing: 0;
-  margin-bottom: 12px;
-  color: #000000;
-  text-align: center;
+  color: #000;
+}
+
+/* ========== CONTROLS WRAPPER ========== */
+.controls {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 88px;
+  flex-wrap: nowrap;
+  margin-left: 64px;
+  margin-bottom: 24px;
+  width: calc(100% - 128px);
+}
+
+/* ========== FILTERS / SORT / LUCKY ========== */
+.filters,
+.sort,
+.lucky {
+  display: flex;
+  flex-direction: column; /* rubrik ovanför knappar */
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+  min-width: 220px;
+}
+
+.filters h2,
+.sort h2,
+.lucky h2 {
+  margin-bottom: 8px;
+}
+
+/* Innehållet (knapparna) ligger i rad under varje rubrik */
+.filters label,
+.sort label,
+.lucky button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .filters,
 .sort {
-  display: flex;
-  flex-wrap: wrap;/* radbrytning på små skärmar */               
-  gap: 8px;
-  justify-content: center;
-  margin-bottom: 24px;
+  flex: 1 1 auto;
 }
 
+.lucky {
+  flex: 0 0 auto;
+}
+
+/* ========== FILTER BUTTONS ========== */
 .filter-option {
   display: inline-block;
   padding: 8px 20px;
-  border: 2px solid transparent;         
+  border: 2px solid transparent;
   border-radius: 999px;
   font-size: 16px;
   font-weight: 500;
-  background-color: var(--mint-green);         
-  color: var(--text-blue);                      
+  background-color: var(--mint-green);
+  color: var(--text-blue);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  margin-right: 4px;
 }
 
 .filter-option:hover,
@@ -78,35 +116,38 @@ h2 {
 }
 
 .filter-option:has(input[type="radio"]:checked) {
-  background-color:var(--blue-main);
-  border-color: var(--blue-outline);
-  color:#FFFFFF;
+  background-color: var(--blue-main);
+  color: #fff;
 }
 
 input[type="radio"] {
   display: none;
 }
 
+/* ========== SORT BUTTONS ========== */
 .sort-button {
   display: inline-block;
   padding: 8px 20px;
-  border: 2px solid transparent;          
+  border: 2px solid transparent;
   border-radius: 999px;
   font-size: 16px;
   font-weight: 500;
   background-color: var(--pink-bg);
-  color: var(--text-blue);                  
+  color: var(--text-blue);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  margin-right: 4px;
 }
+
+.sort-button:hover,
 .sort-button:has(input[type="radio"]:checked) {
-  background-color: #FF6589;
-  color:#FFFFFF;
+  background-color: #ff6589;
+  color: #fff;
 }
-.sort-button:hover {
-  background-color: #FF6589;
-  border-color: var(--blue-outline);
-  color:#FFFFFF;
+
+/* ========== FEELING LUCKY ========== */
+.lucky {
+  align-items: flex-start;
 }
 
 .random-button {
@@ -116,7 +157,7 @@ input[type="radio"] {
   font-family: "Futura", sans-serif;
   font-size: 16px;
   font-weight: 500;
-  background-color:  rgb(250, 136, 210);
+  background-color: rgb(250, 136, 210);
   color: var(--text-blue);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -125,9 +166,10 @@ input[type="radio"] {
 .random-button:hover {
   background-color: rebeccapurple;
   border-color: var(--blue-outline);
-  color:#FFFFFF;
+  color: #fff;
 }
 
+/* ========== CARD GRID ========== */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -137,31 +179,24 @@ input[type="radio"] {
 
 .card {
   width: 300px;
-  top: 337px;
-  left: 1076;
   border-radius: 16px;
-  border: 1px solid #E9E9E9;
+  border: 1px solid #e9e9e9;
   padding: 16px 16px 24px 16px;
-  gap: 16px;
-  font-weight: 400;
-  font-size: 40px;
   background: #fff;
- /* border: 1px solid #E9E9E9;*/
   overflow: hidden;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
 
 .card:hover {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   border-color: var(--blue-main);
 }
 
 .card img {
-  width: 268px;
-  height: 200px;
+  width: 100%;
+  height: auto;
   border-radius: 12px;
-  border-color: #899CCC;
 }
 
 .card-content {
@@ -169,22 +204,15 @@ input[type="radio"] {
 }
 
 .card-content h3 {
-  width: 268px;
-  height: 29px;
   font-family: "Futura", sans-serif;
   font-weight: 700;
   font-size: 22px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color:#000000;
- }
+  color: #000;
+}
 
 .card-content p {
   font-size: 18px;
-  font-style: bold;
-  width: 74;
-  height: 24;
-  opacity: 1;
+  font-weight: 600;
 }
 
 .card-content .ingredients-header {
@@ -204,19 +232,10 @@ input[type="radio"] {
 .time-value {
   font-size: 16px;
   font-weight: 500;
-  font-style: medium;
-  line-height: 100%;
-  letter-spacing: 0%;
   margin-left: 4px;
 }
 
-.divider {
-  width: 100%;
-  height: 0;
-  border-bottom: 1px solid #E9E9E9;
-  margin: 12px 0;
-}
-
+/* ========== EMPTY MESSAGE ========== */
 .empty-message {
   text-align: center;
   background-color: #fff8e1;
@@ -229,30 +248,195 @@ input[type="radio"] {
   animation: pop-in 0.5s ease;
 }
 
-.empty-message h2 {
-  font-size: 2rem;
-  color: #ff9800;                   
-  margin-bottom: 0.5rem;
-}
-
-.empty-message p {
-  font-size: 1.1rem;
-  line-height: 1.5;
-}
-
+/* ========== ANIMATIONS ========== */
 @keyframes pop-in {
-  0% {transform: scale(0.8); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
 
-@media (max-width: 600px) {
-  .cards {
-    grid-template-columns: 1fr;
-   
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
+/* ========== RESPONSIVE DESIGN ========== */
+/* Desktop default (≥1200px) handled by base styles */
 
-  
+/* --- Medium screens: laptops and tablets (max 1024px) --- */
+@media (max-width: 1024px) {
+  .controls {
+    flex-wrap: wrap;
+    gap: 48px;
+    justify-content: flex-start;
+    margin-left: 48px;
+  }
 
- 
+  .filters,
+  .sort,
+  .lucky {
+    min-width: 260px;
+  }
+
+  h1 {
+    font-size: 56px;
+    margin-left: 48px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    width: 260px;
+    padding: 14px;
+  }
+
+  .card-content h3 {
+    font-size: 20px;
+  }
+
+  .card-content p,
+  .card-content ul {
+    font-size: 15px;
+  }
+}
+
+/* --- Small screens: tablets and large phones (max 768px) --- */
+@media (max-width: 768px) {
+  .controls {
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 32px;
+    margin-left: 32px;
+  }
+
+  .filters,
+  .sort,
+  .lucky {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  h1 {
+    font-size: 48px;
+    margin-left: 32px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 240px;
+  }
+
+  .card img {
+    border-radius: 10px;
+  }
+
+  .card-content {
+    padding: 12px 12px 20px 12px;
+  }
+
+  .card-content h3 {
+    font-size: 18px;
+  }
+
+  .card-content p,
+  .card-content ul {
+    font-size: 14px;
+  }
+}
+
+/* --- Extra small screens: phones (max 480px) --- */
+@media (max-width: 480px) {
+  .controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin-left: 16px;
+  }
+
+  .filters,
+  .sort,
+  .lucky {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  h1 {
+    font-size: 42px;
+    margin-left: 16px;
+    margin-top: 48px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  .card-content {
+    padding: 10px 10px 16px 10px;
+  }
+
+  .card-content h3 {
+    font-size: 17px;
+  }
+
+  .card-content p,
+  .card-content ul {
+    font-size: 13px;
+  }
+
+  .ingredients-header {
+    font-size: 15px;
+  }
+}
+
+/* --- Ultra wide screens: large desktop (min 1600px) --- */
+@media (min-width: 1600px) {
+  .main-content {
+    max-width: 1400px;
+  }
+
+  h1 {
+    font-size: 72px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 28px;
+  }
+
+  .card {
+    width: 320px;
+  }
+
+  .card-content h3 {
+    font-size: 24px;
+  }
+
+  .card-content p,
+  .card-content ul {
+    font-size: 17px;
+  }
+}
