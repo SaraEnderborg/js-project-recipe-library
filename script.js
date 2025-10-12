@@ -20,7 +20,7 @@ const params = new URLSearchParams({
   addRecipeInformation: true,
   instructionsRequired: true,
   fillIngredients: true,
-  apiKey: API_KEY2
+  apiKey: API_KEY
 })
 
 const URL = `https://api.spoonacular.com/recipes/complexSearch?${params.toString()}`
@@ -88,6 +88,15 @@ const fetchData = async () => {
 
   try {
     const res = await fetch(URL)
+
+    if (res.status === 402) {
+      cardsContainer.innerHTML = `
+        <div class='empty-message'>
+          <h2>Daily API limit reached 🚫</h2>
+          <p>Please try again later.</p>
+        </div>`;
+      return; 
+    }
 
     if (!res.ok) {
       cardsContainer.innerHTML = `

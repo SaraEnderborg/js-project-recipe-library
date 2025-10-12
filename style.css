@@ -18,12 +18,7 @@ body {
   background: var(--page-bg);
   color: #222;
   font-family: "Futura", "Trebuchet MS", Arial, sans-serif;
-}
-
-.main-content {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 16px;
+  padding: 0 64px;
 }
 
 /* ========== HEADINGS ========== */
@@ -35,7 +30,6 @@ h1 {
   line-height: 100%;
   text-align: left;
   margin-top: 64px;
-  margin-left: 64px;
   margin-bottom: 32px;
 }
 
@@ -53,10 +47,8 @@ h2 {
   justify-content: flex-start;
   align-items: flex-start;
   gap: 88px;
-  flex-wrap: nowrap;
-  margin-left: 64px;
+  flex-wrap: wrap;
   margin-bottom: 24px;
-  width: calc(100% - 128px);
 }
 
 /* ========== FILTERS / SORT / LUCKY ========== */
@@ -64,7 +56,7 @@ h2 {
 .sort,
 .lucky {
   display: flex;
-  flex-direction: column; /* rubrik ovanför knappar */
+  flex-direction: column;
   align-items: flex-start;
   gap: 8px;
   text-align: left;
@@ -77,7 +69,6 @@ h2 {
   margin-bottom: 8px;
 }
 
-/* Innehållet (knapparna) ligger i rad under varje rubrik */
 .filters label,
 .sort label,
 .lucky button {
@@ -86,28 +77,24 @@ h2 {
   justify-content: center;
 }
 
-.filters,
-.sort {
-  flex: 1 1 auto;
-}
-
-.lucky {
-  flex: 0 0 auto;
-}
-
-/* ========== FILTER BUTTONS ========== */
-.filter-option {
+/* ========== BUTTON STYLES (FILTER & SORT) ========== */
+.filter-option,
+.sort-button {
   display: inline-block;
   padding: 8px 20px;
   border: 2px solid transparent;
   border-radius: 999px;
   font-size: 16px;
   font-weight: 500;
-  background-color: var(--mint-green);
   color: var(--text-blue);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   margin-right: 4px;
+}
+
+/* ===== FILTER BUTTONS ===== */
+.filter-option {
+  background-color: var(--mint-green);
 }
 
 .filter-option:hover,
@@ -120,23 +107,9 @@ h2 {
   color: #fff;
 }
 
-input[type="radio"] {
-  display: none;
-}
-
-/* ========== SORT BUTTONS ========== */
+/* ===== SORT BUTTONS ===== */
 .sort-button {
-  display: inline-block;
-  padding: 8px 20px;
-  border: 2px solid transparent;
-  border-radius: 999px;
-  font-size: 16px;
-  font-weight: 500;
   background-color: var(--pink-bg);
-  color: var(--text-blue);
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  margin-right: 4px;
 }
 
 .sort-button:hover,
@@ -145,7 +118,12 @@ input[type="radio"] {
   color: #fff;
 }
 
-/* ========== FEELING LUCKY ========== */
+/* ===== HIDE RADIO INPUTS ===== */
+input[type="radio"] {
+  display: none;
+}
+
+/* ========== FEELING LUCKY BUTTON ========== */
 .lucky {
   align-items: flex-start;
 }
@@ -254,7 +232,6 @@ input[type="radio"] {
     transform: scale(0.8);
     opacity: 0;
   }
-
   100% {
     transform: scale(1);
     opacity: 1;
@@ -262,9 +239,6 @@ input[type="radio"] {
 }
 
 /* ========== RESPONSIVE DESIGN ========== */
-/* Desktop default (≥1200px) handled by base styles */
-
-/* --- Medium screens: laptops and tablets (max 1024px) --- */
 @media (max-width: 1024px) {
   .controls {
     flex-wrap: wrap;
@@ -288,23 +262,19 @@ input[type="radio"] {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 20px;
   }
+}
 
-  .card {
-    width: 260px;
-    padding: 14px;
+@media (max-width: 900px) {
+  .filters {
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
-  .card-content h3 {
-    font-size: 20px;
-  }
-
-  .card-content p,
-  .card-content ul {
-    font-size: 15px;
+  .filter-option {
+    margin-bottom: 8px;
   }
 }
 
-/* --- Small screens: tablets and large phones (max 768px) --- */
 @media (max-width: 768px) {
   .controls {
     flex-wrap: wrap;
@@ -333,37 +303,34 @@ input[type="radio"] {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 16px;
   }
+}
 
-  .card {
+@media (max-width: 680px) {
+  .controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .filters,
+  .sort,
+  .lucky {
     width: 100%;
-    max-width: 240px;
   }
 
-  .card img {
-    border-radius: 10px;
-  }
-
-  .card-content {
-    padding: 12px 12px 20px 12px;
-  }
-
-  .card-content h3 {
-    font-size: 18px;
-  }
-
-  .card-content p,
-  .card-content ul {
-    font-size: 14px;
+  .filter-option,
+  .sort-button,
+  .random-button {
+    flex-wrap: wrap;
+    margin-bottom: 8px;
   }
 }
 
-/* --- Extra small screens: phones (max 480px) --- */
 @media (max-width: 480px) {
   .controls {
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;
-    margin-left: 16px;
   }
 
   .filters,
@@ -375,7 +342,6 @@ input[type="radio"] {
 
   h1 {
     font-size: 42px;
-    margin-left: 16px;
     margin-top: 48px;
   }
 
@@ -387,37 +353,9 @@ input[type="radio"] {
     grid-template-columns: 1fr;
     gap: 14px;
   }
-
-  .card {
-    width: 100%;
-    max-width: 100%;
-    padding: 12px;
-  }
-
-  .card-content {
-    padding: 10px 10px 16px 10px;
-  }
-
-  .card-content h3 {
-    font-size: 17px;
-  }
-
-  .card-content p,
-  .card-content ul {
-    font-size: 13px;
-  }
-
-  .ingredients-header {
-    font-size: 15px;
-  }
 }
 
-/* --- Ultra wide screens: large desktop (min 1600px) --- */
 @media (min-width: 1600px) {
-  .main-content {
-    max-width: 1400px;
-  }
-
   h1 {
     font-size: 72px;
   }
@@ -437,6 +375,6 @@ input[type="radio"] {
 
   .card-content p,
   .card-content ul {
-    font-size: 17px;
+     font-size: 17px;
   }
 }
